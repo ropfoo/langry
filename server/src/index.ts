@@ -1,23 +1,16 @@
 import express from 'express';
 
-import { getLanguageJSON } from './getLanguage';
-import { Language } from './types';
+import { projectRouter } from './routes/project';
 
 const app = express();
 const port = 5000;
 
+app.use(express.json());
+
 app.get('/', (_, res) => {
-  res.send('hello');
+    res.send('🌍 Welcome to Langry');
 });
 
-app.get('/lang/en', (_, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.end(getLanguageJSON(Language.EN));
-});
+app.use('/projects', projectRouter());
 
-app.get('/lang/de', (_, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.end(getLanguageJSON(Language.DE));
-});
-
-app.listen(port, () => console.log(`Running on port ${port}`));
+app.listen(port, () => console.log(`🌍 Langry is running on port ${port} 😾`));

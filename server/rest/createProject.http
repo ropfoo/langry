@@ -1,0 +1,7 @@
+POST http://localhost:5000/projects/create
+content-type: application/json
+
+
+{
+    "name": "newProject"
+}

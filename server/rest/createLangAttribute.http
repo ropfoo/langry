@@ -1,0 +1,12 @@
+POST http://localhost:5000/projects/bob/lang/createAttribute
+content-type: application/json
+
+
+{
+    "attribute": "language",
+    "langValues":[
+    {
+        "lang": "en",
+        "value":"english"
+    }]
+}

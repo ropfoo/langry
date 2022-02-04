@@ -1,0 +1,8 @@
+POST http://localhost:5000/projects/bob/lang/de/updateAttribute
+content-type: application/json
+
+
+{
+    "attribute": "language",
+    "value": "deutsch"
+}

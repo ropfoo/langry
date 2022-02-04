@@ -1,4 +1,9 @@
 export enum Language {
-  EN = 'en',
-  DE = 'de',
+    en = 'en',
+    de = 'de',
 }
+
+export type LanguageField = {
+    attribute: string;
+    value: string;
+};
