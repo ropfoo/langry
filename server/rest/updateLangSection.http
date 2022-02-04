@@ -1,0 +1,11 @@
+POST http://localhost:5000/projects/bob/lang/de/updateSection
+content-type: application/json
+
+
+{
+    "sectionName": "coolSection",
+    "sectionContent": {
+        "attribute":"title",
+        "value": "Start auf deutsch"
+    }
+}

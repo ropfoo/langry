@@ -1,0 +1,12 @@
+POST http://localhost:5000/projects/bob/lang/createSection
+content-type: application/json
+
+
+{
+    "sectionName": "coolSection",
+    "sectionContent": [{
+        "lang": "en",
+        "attribute":"title",
+        "value": "Start"
+    }]
+}

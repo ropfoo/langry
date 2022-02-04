@@ -1,10 +1,12 @@
 import express from 'express';
+import { createLanguageAttribute } from '../helper/language/attribute/createLanguageAttribute';
+import { updateLanguageAttribute } from '../helper/language/attribute/updateLanguageAttribute';
+import { createLanguageSection } from '../helper/language/section/createLanguageSection';
+import { updateLanguageSection } from '../helper/language/section/updateLanguageSection';
 import {
-    createLanguageAttribute,
     getLanguageJSON,
     getLanguages,
     getLanguagesJSON,
-    updateLanguageAttribute,
 } from '../helper/languageHelper';
 import { Language } from '../types';
 
@@ -29,6 +31,19 @@ export const languageRouter = (project: string) => {
         }
     });
 
+    // Create Language Section
+    router.post(`/createSection`, (req, res) => {
+        res.json({ requestBody: req.body });
+        if (req.body.sectionName && req.body.sectionContent) {
+            createLanguageSection(
+                project,
+                req.body.sectionName,
+                req.body.sectionContent
+            );
+        }
+    });
+
+    // Define Language Routes
     for (const lang in Language) {
         router.get(`/${lang}`, (_, res) => {
             res.setHeader('Content-Type', 'application/json');
@@ -42,6 +57,17 @@ export const languageRouter = (project: string) => {
                 updateLanguageAttribute(project, lang as Language, {
                     attribute: req.body.attribute,
                     value: req.body.value,
+                });
+            }
+        });
+
+        // Update Language Section
+        router.post(`/${lang}/updateSection`, (req, res) => {
+            res.json({ requestBody: req.body });
+            if (req.body.sectionName && req.body.sectionContent) {
+                updateLanguageSection(project, lang as Language, {
+                    name: req.body.sectionName,
+                    content: req.body.sectionContent,
                 });
             }
         });
