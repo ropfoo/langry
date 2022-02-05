@@ -8,18 +8,20 @@ export enum Method {
 export function useFetch(url: string, method: Method) {
     const [data, setData] = useState();
 
+    const refetch = async () => {
+        const response = await fetch(url, {
+            method,
+            headers: {
+                'Content-type': 'application/json',
+            },
+        });
+        const json = await response.json();
+        setData(json);
+    };
+
     useEffect(() => {
-        (async () => {
-            const response = await fetch(url, {
-                method,
-                headers: {
-                    'Content-type': 'application/json',
-                },
-            });
-            const json = await response.json();
-            setData(json);
-        })();
+        refetch();
     }, [method, url]);
 
-    return { data };
+    return { data, refetch };
 }

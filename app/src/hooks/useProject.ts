@@ -48,5 +48,5 @@ export function useProject(projectName: string) {
         }
     }, [projectData.data]);
 
-    return { projectLang, languageSections };
+    return { projectLang, languageSections, refetch: projectData.refetch };
 }

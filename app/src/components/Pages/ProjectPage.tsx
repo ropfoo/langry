@@ -6,7 +6,9 @@ import { SubTitle, Title } from '../Text';
 
 const ProjectPage: React.FC = () => {
     const { project } = useParams();
-    const { projectLang, languageSections } = useProject(project ?? '');
+    const { projectLang, languageSections, refetch } = useProject(
+        project ?? ''
+    );
 
     const getFormikFieldArrays = (sections: any[]) => {
         return sections.map(section =>
@@ -25,20 +27,22 @@ const ProjectPage: React.FC = () => {
         [languageSections]
     );
 
-    const submitLanguageUpdate = (lang: string, values: any) => {
+    const submitLanguageUpdate = async (lang: string, values: any) => {
         console.log('submitting', values, lang);
         // http://localhost:5000/projects/bob/lang/de/updateAttribute
 
-        // fetch(
-        //     `${process.env.REACT_APP_LANGRY_API}/projects/${project}/lang/${lang}/updateAttribute`,
-        //     {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(values),
-        //     }
-        // );
+        const response = await fetch(
+            `${process.env.REACT_APP_LANGRY_API}/projects/${project}/lang/${lang}/updateAttributesMulti`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ attributes: { ...values } }),
+            }
+        );
+        console.log(response.body);
+        await refetch();
     };
 
     return (

@@ -1,6 +1,7 @@
 import express from 'express';
 import { createLanguageAttribute } from '../helper/language/attribute/createLanguageAttribute';
 import { updateLanguageAttribute } from '../helper/language/attribute/updateLanguageAttribute';
+import { updateLanguageAttributesMulti } from '../helper/language/attribute/updateLanguageAttributesMulti';
 import { createLanguageSection } from '../helper/language/section/createLanguageSection';
 import { updateLanguageSection } from '../helper/language/section/updateLanguageSection';
 import {
@@ -58,6 +59,18 @@ export const languageRouter = (project: string) => {
                     attribute: req.body.attribute,
                     value: req.body.value,
                 });
+            }
+        });
+
+        // Update Mutlitple Language Attributes
+        router.post(`/${lang}/updateAttributesMulti`, (req, res) => {
+            res.json({ requestBody: req.body });
+            if (req.body.attributes) {
+                updateLanguageAttributesMulti(
+                    project,
+                    lang as Language,
+                    req.body.attributes
+                );
             }
         });
 

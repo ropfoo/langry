@@ -1,0 +1,11 @@
+POST http://localhost:5000/projects/bob/lang/en/updateAttributesMulti
+content-type: application/json
+
+
+{
+    "attributes": {
+        "startHere": "new start here",
+        "language": "new english"
+    }
+ 
+}
