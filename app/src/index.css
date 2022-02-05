@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 html {
-    @apply bg-baby;
-    @apply text-richblack;
+    @apply bg-richblack;
+    @apply text-baby;
+}
+
+input {
+    @apply bg-space;
+    @apply text-baby;
 }

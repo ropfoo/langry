@@ -3,9 +3,11 @@ module.exports = {
     theme: {
         extend: {},
         colors: {
-            richblack: '#14274E',
-            space: '#325D79',
+            richblack: '#171D32',
+            space: '#1C233C',
             orange: '#F26627',
+            blue: '#365AFA',
+            grey: '#888D9D',
             sky: '#9BD7D1',
             baby: '#EFEEEE',
             cloud: '#fff',
