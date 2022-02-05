@@ -10,8 +10,9 @@ export function useProject(projectName: string) {
     const [projectLang, setProjectLang] = useState('');
 
     // ugly state
-    const [langueSections, setLanguageSection] = useState<Section[]>([]);
+    const [languageSections, setLanguageSections] = useState<Section[]>([]);
 
+    // TODO make work with sections and stuff
     const getLangSections = (object: any) => {
         const languages = Object.entries(object);
         const sections = languages.reduce((value: Section[], lang: any) => {
@@ -32,7 +33,7 @@ export function useProject(projectName: string) {
             return value;
         }, []);
 
-        setLanguageSection(sections);
+        setLanguageSections(sections);
     };
 
     const projectData = useFetch(
@@ -47,5 +48,5 @@ export function useProject(projectName: string) {
         }
     }, [projectData.data]);
 
-    return { projectLang, langueSections };
+    return { projectLang, languageSections };
 }

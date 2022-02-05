@@ -11,7 +11,7 @@ const SideNav: React.FC = () => {
             h-full
             w-32
             pt-12 pl-6
-            bg-richblack
+            bg-space
             absolute
             '>
             {projects?.map(project => (
@@ -21,7 +21,7 @@ const SideNav: React.FC = () => {
                     className={({ isActive }) => `
                     text-xl 
                     font-bold
-                    ${isActive ? 'text-cloud' : 'text-somegrey'}
+                    ${isActive ? 'text-orange' : 'text-baby'}
                     `}>
                     {project}
                 </NavLink>

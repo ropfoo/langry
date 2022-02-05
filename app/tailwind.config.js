@@ -4,9 +4,10 @@ module.exports = {
         extend: {},
         colors: {
             richblack: '#14274E',
-            space: '#394867',
-            somegrey: '#9BA4B4',
-            baby: '#F1F6F9',
+            space: '#325D79',
+            orange: '#F26627',
+            sky: '#9BD7D1',
+            baby: '#EFEEEE',
             cloud: '#fff',
         },
     },
